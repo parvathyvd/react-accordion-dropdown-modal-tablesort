@@ -50,6 +50,37 @@ const Table = ({ tableData, config }) => {
     }
   };
 
+  const getIcons = (label, sortBy, sortOrder) => {
+    if (label.toLowerCase() !== sortBy) {
+      return (
+        <>
+          <BiUpArrow /> <BiDownArrow />
+        </>
+      );
+    }
+    if (sortOrder === null) {
+      return (
+        <>
+          <BiUpArrow /> <BiDownArrow />
+        </>
+      );
+    }
+    if (sortOrder === "asc") {
+      return (
+        <>
+          <BiUpArrow />
+        </>
+      );
+    }
+    if (sortOrder === "desc") {
+      return (
+        <>
+          <BiDownArrow />
+        </>
+      );
+    }
+  };
+
   return (
     <table className="table-auto border-spacing-2 p-3">
       <thead className="bg-sky-500/75">
@@ -60,14 +91,10 @@ const Table = ({ tableData, config }) => {
                 className="p-3"
                 onClick={() => onSortHandler(tableHeader.label)}
               >
-                <span>
+                <span className="label-sort">
                   {tableHeader.label}
                   {tableHeader.sortable && (
-                    <>
-                      <>
-                        <BiUpArrow /> <BiDownArrow />
-                      </>
-                    </>
+                    <>{getIcons(tableHeader.label, sortBy, sortOrder)}</>
                   )}
                 </span>
               </td>

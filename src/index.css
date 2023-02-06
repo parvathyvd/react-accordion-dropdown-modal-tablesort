@@ -50,7 +50,12 @@ html{
   padding: 2rem;
   color: #fff;
 }
-
+    span.label-sort {
+      display: flex !important;
+      gap: 0.2rem;
+      align-items: center;
+  
+    }
 @media screen and (min-width: 800px) {
   
   .sidebar{
@@ -61,4 +66,5 @@ html{
       gap: 3rem;
       grid-template-columns: minmax(20rem, max-content) 1fr
     }
+      
 }
